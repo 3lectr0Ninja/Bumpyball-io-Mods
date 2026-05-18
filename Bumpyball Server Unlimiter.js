@@ -26,6 +26,7 @@
             if (args[0].includes("/Ping")) {
                 const server = await clonedResponse.json();
                 server.MaxPlayers = 999;
+                server.CurrentPlayers -= 1;
                 return new Response(JSON.stringify(server), {
                     headers: clonedResponse.headers,
                     status: clonedResponse.status,
