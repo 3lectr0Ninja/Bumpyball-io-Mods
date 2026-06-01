@@ -17,6 +17,7 @@ let Packet = window.packet = {
         24: ["version", "uint"],
         32: ["skinId", "uint"],
         42: ["password", "string"],
+        50: ["idToken","string"],
         56: ["authenticationMethod", "uint"],
         }]
     },
