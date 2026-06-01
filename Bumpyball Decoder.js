@@ -103,6 +103,11 @@ let Packet = window.packet = {
             21: ["z", "float"]
         }],
         29: ["rotation", "float"],
+        34: ["velocity", "dict", {
+            13: ["x", "float"],
+            21: ["z", "float"],
+                    }],
+        45: ["angularvelocity","float"]
         }]
     },
 7:{
