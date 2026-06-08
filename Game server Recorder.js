@@ -51,25 +51,6 @@ let server = {
     },
 }
 let ServerPacketHandler = {
-    AFK(){
-        setInterval(() => {
-            let j= {
-        8: ["PacketId", "int",7],
-        18: ["Data", "dict",{
-        8: ["command", "bool",0],
-        18: ["position", "dict", {
-            13: ["x", "float",1],
-            21: ["z", "float",0],
-        }],
-        24: ["EID", "uint",1099],
-        }]
-}
-            let arr= new BR([]).Sencoder(j)
-            let data = new Uint8Array(arr)
-            if(server.ws && server.ws.readyState === 1){
-            server.ws.s(data)}
-        },5000)
-    },
     PacketSplitter(j){
         for (let b in j) {
         let _j = j[b]
@@ -245,7 +226,6 @@ WebSocket.prototype.send = function (data) {
    if (!this.om){
        let q=this.url.split(":")
        server.port = q[q.length-1].split("/")[0]
-       ServerPacketHandler.AFK()
        server.rec=true
        counter = setInterval(()=>{
            if(server.state==3){
