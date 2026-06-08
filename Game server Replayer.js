@@ -157,26 +157,7 @@ let ReplayHandler ={
         }
         return j
     },
-    AFK(){
-        setInterval(() => {
-            let j= {
-        8: ["PacketId", "int",7],
-        18: ["Data", "dict",{
-        8: ["command", "bool",0],
-        18: ["position", "dict", {
-            13: ["x", "float",1],
-            21: ["z", "float",0],
-        }],
-        24: ["EID", "uint",1099],
-        }]
-}
-            let arr= new BR([]).Sencoder(j)
-            let data = new Uint8Array(arr)
-            server.ws.s(data)
-        },5000)
-    },
     StartReplay(){
-        this.AFK()
         server.players.forEach(id=>{
                 if(id==server.clientID){
                     let j={
