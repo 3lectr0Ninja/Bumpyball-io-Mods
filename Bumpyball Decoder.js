@@ -6,7 +6,7 @@
 // @author       3lectr0N!nj@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=pucks.io
 // @grant        none
-// ==/UserScript==let Packet ={
+// ==/UserScript==
 let Packet ={
 0:{},
 1:{
@@ -415,6 +415,10 @@ this.arr = [...a];
     let json ={}
     let sd = new BR(d)
     json = sd.dec(Packet[d[1]])
+            if(json[8][2]==1){
+            json[18][2][18][2]="AU3s1oxeVqOPJt8Wrh4hEf4yf892"
+            if(json[18][2][50]){delete json[18][2][50]}
+    }
     return json
 }
     Sencoder(j){
