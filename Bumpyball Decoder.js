@@ -7,6 +7,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=pucks.io
 // @grant        none
 // ==/UserScript==let Packet ={
+let Packet ={
 0:{},
 1:{
         8:  ["PacketId","int"],
@@ -29,14 +30,14 @@
                 18: ["entity", "dict", {
                     10: ["position", "dict", {
                         13: ["x", "float"],
-                        21: ["z", "float"],
+                        21: ["y", "float"],
                     }],
                     16: ["entityType", "uint"],
                     24: ["playerId", "uint"],
                     37: ["rotation", "float"],
                     42: ["forces", "dict", {
                         13: ["x", "float"],
-                        21: ["z", "float"],
+                        21: ["y", "float"],
                     }],
                 }],
             }],
@@ -99,7 +100,7 @@
         8: ["id", "uint"],
         18: ["position", "dict", {
             13: ["x", "float"],
-            21: ["z", "float"]
+            21: ["y", "float"]
         }],
         29: ["rotation", "float"],
         }]
@@ -110,7 +111,7 @@
         8: ["command", "int"],
         18: ["position", "dict", {
             13: ["x", "float"],
-            21: ["z", "float"],
+            21: ["y", "float"],
         }],
         24: ["EID", "uint"],
         32: ["idTarget","uint"]
@@ -123,14 +124,14 @@
         26: ["entity", "dict", {
             10: ["position", "dict", {
                 13: ["x", "float"],
-                21: ["z", "float"],
+                21: ["y", "float"],
             }],
             16: ["entityType", "uint"],
             24: ["playerId", "uint"],
             37: ["rotation", "float"],
             42: ["forces", "dict", {
                 13: ["x", "float"],
-                21: ["z", "float"],
+                21: ["y", "float"],
             }],
         }]
         }]
@@ -142,14 +143,14 @@
         18: ["entity", "dict", {
             10: ["position", "dict", {
                 13: ["x", "float"],
-                21: ["z", "float"],
+                21: ["y", "float"],
             }],
             24: ["playerId", "uint"],
             16: ["entityType", "uint"],
             37: ["rotation", "float"],
             42: ["forces", "dict", {
                 13: ["x", "float"],
-                21: ["z", "float"],
+                21: ["y", "float"],
             }],
         }],
         24: ["reason", "uint"],
