@@ -104,6 +104,11 @@ let Packet ={
         }],
         29: ["rotation", "float"],
         }]
+        34: ["velocity", "dict", {
+            13: ["x", "float"],
+            21: ["z", "float"],
+                    }],
+        45: ["angularvelocity","float"]
     },
 7:{
         8: ["PacketId", "int"],
