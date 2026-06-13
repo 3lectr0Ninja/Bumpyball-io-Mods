@@ -103,7 +103,7 @@ let Packet ={
             21: ["y", "float"]
         }],
         29: ["rotation", "float"],
-        }]
+        }],
         34: ["velocity", "dict", {
             13: ["x", "float"],
             21: ["z", "float"],
