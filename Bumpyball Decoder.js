@@ -113,7 +113,7 @@ let Packet ={
 7:{
         8: ["PacketId", "int"],
         18: ["Data", "dict",{
-        8: ["command", "int"],
+        8: ["command", "bool"],
         18: ["position", "dict", {
             13: ["x", "float"],
             21: ["y", "float"],
