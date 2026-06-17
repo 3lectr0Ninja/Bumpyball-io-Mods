@@ -1,13 +1,4 @@
-// ==UserScript==
-// @name         Bumpyball.io/Pucks.io Decoder
-// @namespace    https://github.com/3lectr0Ninja
-// @version      1
-// @description  To understand data of messages you send
-// @author       3lectr0N!nj@
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=pucks.io
-// @grant        none
-// ==/UserScript==
-let Packet ={
+let Packet = window.packet = {
 0:{},
 1:{
         8:  ["PacketId","int"],
@@ -30,14 +21,14 @@ let Packet ={
                 18: ["entity", "dict", {
                     10: ["position", "dict", {
                         13: ["x", "float"],
-                        21: ["y", "float"],
+                        21: ["z", "float"],
                     }],
                     16: ["entityType", "uint"],
                     24: ["playerId", "uint"],
                     37: ["rotation", "float"],
                     42: ["forces", "dict", {
                         13: ["x", "float"],
-                        21: ["y", "float"],
+                        21: ["z", "float"],
                     }],
                 }],
             }],
@@ -69,7 +60,7 @@ let Packet ={
 3:{
         8:  ["PacketId","int"],
         18: ["Data","dict",{
-        10: ["list", "dict", {
+        10: ["list", "arr", {
             8: ["id", "int"],
             18: ["name", "string"],
             56: ["bot", "int"],
@@ -100,7 +91,7 @@ let Packet ={
         8: ["id", "uint"],
         18: ["position", "dict", {
             13: ["x", "float"],
-            21: ["y", "float"]
+            21: ["z", "float"]
         }],
         29: ["rotation", "float"],
         34: ["velocity", "dict", {
@@ -109,17 +100,16 @@ let Packet ={
                     }],
         45: ["angularvelocity","float"]
         }]
-},
+    },
 7:{
         8: ["PacketId", "int"],
         18: ["Data", "dict",{
         8: ["command", "bool"],
         18: ["position", "dict", {
             13: ["x", "float"],
-            21: ["y", "float"],
+            21: ["z", "float"],
         }],
         24: ["EID", "uint"],
-        32: ["idTarget","uint"]
         }]
 },
 8:{
@@ -129,14 +119,14 @@ let Packet ={
         26: ["entity", "dict", {
             10: ["position", "dict", {
                 13: ["x", "float"],
-                21: ["y", "float"],
+                21: ["z", "float"],
             }],
             16: ["entityType", "uint"],
             24: ["playerId", "uint"],
             37: ["rotation", "float"],
             42: ["forces", "dict", {
                 13: ["x", "float"],
-                21: ["y", "float"],
+                21: ["z", "float"],
             }],
         }]
         }]
@@ -145,21 +135,20 @@ let Packet ={
         8: ["PacketId", "uint"],
         18: ["Data", "dict",{
         8: ["id", "uint"],
+        24: ["reason", "uint"],
         18: ["entity", "dict", {
             10: ["position", "dict", {
                 13: ["x", "float"],
-                21: ["y", "float"],
+                21: ["z", "float"],
             }],
             24: ["playerId", "uint"],
             16: ["entityType", "uint"],
             37: ["rotation", "float"],
             42: ["forces", "dict", {
                 13: ["x", "float"],
-                21: ["y", "float"],
+                21: ["z", "float"],
             }],
         }],
-        24: ["reason", "uint"],
-        32: ["attackerpid","uint"]
         }]
     },
 10:{},
@@ -207,32 +196,14 @@ let Packet ={
 15:{
         8:  ["PacketId","int"],
         18: ["Data","dict",{
-        8: ["event", "uint"],
         16: ["playerId", "uint"],
-        24: ["data", "uint"],
         }]
     },
-16:{
-        8:  ["PacketId","int"],
-        18: ["Data","dict",{
-        10: ["PlayerRecords","dict",{
-            10: ["list", "arr", {
-            8: ["id", "int"],
-            18: ["name", "string"],
-            56: ["bot", "bool"],
-            24: ["goals", "uint"],
-            32: ["assits", "uint"],
-            40: ["team", "uint"],
-            48: ["skinId", "uint"],
-            64: ["experience", "uint"],
-            }],
-        }]
-        }]
-    },
+16:{},
 17:{
          8:  ["PacketId","int"],
         18: ["Data","dict",{
-        10: ["PlayerRecord","dict",{
+        10: ["player","dict",{
           10: ["uid","string"],
           34: ["name","string"],
           40: ["goals","int"],
@@ -246,28 +217,8 @@ let Packet ={
         }],
         }]
     },
-18:{
-         8:  ["PacketId","int"],
-        18: ["Data","dict",{
-        10: ["challenges","arr",{
-          8: ["id","uint"],
-          16: ["challengetype","uint"],
-          40: ["challengeGoal","int"],
-          48: ["challengeProgress","int"],
-        }],
-        }]
-    },
-19:{
-         8:  ["PacketId","int"],
-        18: ["Data","dict",{
-        10: ["challenges","dict",{
-          8: ["id","uint"],
-          16: ["challengetype","uint"],
-          40: ["challengeGoal","int"],
-          48: ["challengeProgress","int"],
-        }],
-        }]
-    }
+18:{},
+19:{}
 }
 class BR {
 arr=[];
@@ -290,15 +241,15 @@ this.arr = [...a];
     int7(){
     let r = 0;
     let b = 0;
-
+ 
     while (b !== 35) {
         let c = this.rb();
         r |= (c & 127) << b;
-
+ 
         if ((c & 128) === 0) {
             return [r, (b / 7) + 1];
         }
-
+ 
         b += 7;}
     }
     str(){
@@ -319,7 +270,7 @@ this.arr = [...a];
         let obj ={};
         for (let byte in json) {
   let [keyName, valueType] = json[byte];
-
+ 
   if (["int", "bool", "uint","float"].includes(valueType)) {
     obj[byte] = [keyName,valueType,0];
   }
@@ -420,10 +371,6 @@ this.arr = [...a];
     let json ={}
     let sd = new BR(d)
     json = sd.dec(Packet[d[1]])
-            if(json[8][2]==1){
-            json[18][2][18][2]="AU3s1oxeVqOPJt8Wrh4hEf4yf892"
-            if(json[18][2][50]){delete json[18][2][50]}
-    }
     return json
 }
     Sencoder(j){
@@ -459,3 +406,4 @@ this.arr = [...a];
         return a
 }
         }
+window.BR = BR
