@@ -1,18 +1,3 @@
-// ==UserScript==
-// @name         Game server Replayer
-// @namespace    https://github.com/3lectr0Ninja
-// @version      1.9
-// @description  Record ur game easily using the script
-// @author       3lectr0N!nj@
-// @match        https://www.pucks.io/*
-// @match        https://www.bumpyball.io/*
-// @match        http://www.pucks.io/*
-// @match        http://www.bumpyball.io/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=pucks.io
-// @require      https://raw.githubusercontent.com/3lectr0Ninja/Bumpyball-io-Mods/refs/heads/main/Bumpyball%20Decoder.js
-// @require      https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js
-// @grant        none
-// ==/UserScript==
 let tp = window.tp =false
 let InReplay=window.InReplay=false
 setTimeout(()=>{let name=window.name=(prompt("Enter File Name:-")).split("808")[0]},2000)
