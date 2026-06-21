@@ -135,7 +135,6 @@ let Packet = window.packet = {
         8: ["PacketId", "uint"],
         18: ["Data", "dict",{
         8: ["id", "uint"],
-        24: ["reason", "uint"],
         18: ["entity", "dict", {
             10: ["position", "dict", {
                 13: ["x", "float"],
@@ -149,6 +148,8 @@ let Packet = window.packet = {
                 21: ["z", "float"],
             }],
         }],
+        24: ["reason", "uint"],
+        32: ["attacker","int"],
         }]
     },
 10:{},
