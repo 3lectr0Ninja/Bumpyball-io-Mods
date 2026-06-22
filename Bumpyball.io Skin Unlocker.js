@@ -1,3 +1,4 @@
+window.open("https://raw.githubusercontent.com/3lectr0Ninja/Bumpyball-io-Mods/refs/heads/main/Skin%20Unlocker%20Instructions.txt")
 const originalFetch = window.fetch;
 window.fetch = async function (...args) {
     const response = await originalFetch.apply(this, args);
