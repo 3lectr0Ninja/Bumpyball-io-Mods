@@ -1,0 +1,21 @@
+Skin Unlocker Instructions:-
+When game loads you can pick any vehicle from the game's Customize option.
+If you want to change car mid-game then you have to use /car command in chat
+example: /car carid
+you can replace carid with carid u want. you can get carid from the list given below
+LEVEL   CAR                     CARID
+1       Standard                0
+1       Cruiser                 1
+2       Tricked Out             2
+3       Bugged Out              3
+4       Taxi Cab                4
+5       Hot Rod                 5
+7       Drag Racer              6
+10      Classic                 7
+12      Soccer Van              8
+15      Cement Mixer            9
+20      Apocalypse              10
+25      Dump Truck              11
+30      Steam Roller            12
+35      Box Car                 14
+50      Pusher                  13
