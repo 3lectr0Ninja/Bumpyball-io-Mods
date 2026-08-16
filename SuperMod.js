@@ -91,7 +91,6 @@ const server = window.server={
         switch(packetid){
             case 1 :{
                 this.getclient(packetdata)
-                packetdata[10][2] = "[99]3lectr0N!nj@"
                 break;
             }
             case 5:{
@@ -107,7 +106,6 @@ const server = window.server={
                         for (let eid in this.entities){
                         if(c>=0&&c<=14){
                             let pid = this.entities[eid].playerId;
-                            console.log("pid",pid);
                             this.players[pid].skinId = Math.floor(c);
                             server.changecar(pid)
                         }
@@ -121,7 +119,6 @@ const server = window.server={
                     let c = Number(m.split(" ")[2])
                     if(c!==2&&c>=0&&c<=3&&id!=="all"){}
                 }
-                console.log(m)
                 if(m=="/rejoin"){server.rejoin()}
                 break;
             }
@@ -143,7 +140,6 @@ const server = window.server={
         let j = data
         let packetid = j[8][2]
         let packetdata = j[18][2]
-        if(packetid!==6)console.log(packetid)
         switch(packetid){
             case 2:{
                 this.client.pid = packetdata[24][2]
@@ -326,7 +322,6 @@ WS.send = function(data){
     if (!server.rj&&data[1]==1) {
     this.join_arr = data
     server.join_arr = this.join_arr
-    console.log("[REJOIN] Captured join packet")
 }
     if(server.rj&&data[1]==1){
         data=server.join_arr
