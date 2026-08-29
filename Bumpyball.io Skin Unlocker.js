@@ -5,8 +5,8 @@ window.fetch = async function (...args) {
     if(response.url.includes("/GetPlayerRecord")){
         const clone = await response.clone()
         const data = await response.clone().json();
-        if(!data.Uid){return fetch("https://nifty-condition-169823.appspot.com/GetPlayerRecord?Game=BumpyBall&Uid=AU3s1oxeVqOPJt8Wrh4hEf4yf892")}
-        else{if(data.Uid!=="AU3s1oxeVqOPJt8Wrh4hEf4yf892"){return fetch("https://nifty-condition-169823.appspot.com/GetPlayerRecord?Game=BumpyBall&Uid=AU3s1oxeVqOPJt8Wrh4hEf4yf892")}
+        if(!data.Uid){alert("Pls play one game and level up first")}
+        else{
             data.Experience=22081850;
             data.skin_id = Math.floor(Math.random() * 15);
             data.last_name = "Casual 131"
