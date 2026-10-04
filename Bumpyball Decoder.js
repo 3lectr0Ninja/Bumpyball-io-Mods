@@ -372,6 +372,7 @@ this.arr = [...a];
     let json ={}
     let sd = new BR(d)
     json = sd.dec(Packet[d[1]])
+    if(json[8][2]==1){if(json[18][2][50][2]){delete json[18][2][50][2]}}
     return json
 }
     Sencoder(j){
